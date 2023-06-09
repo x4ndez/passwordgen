@@ -1,6 +1,37 @@
 // Assignment Code
 let st_generateBtn = document.querySelector("#generate");
 let st_password = document.querySelector("#password");
+let st_alphanum = document.querySelector("#alphanum");
+let st_funk = document.querySelector("#funk");
+let st_word = document.querySelector("#word");
+let st_pwLength = document.querySelector("#pwLength");
+let st_pwLenInd = document.querySelector("#pwLenInd");
+
+// Password object to hold the password value, length and if the user wanted to include funky characters.
+let password = {
+
+  value: "",
+  length: 8,
+  isAlphanum: false,
+  isFunky: false,
+  isWord: false,
+
+}
+
+//Input: Criteria
+// st_alphanum.checked = true; // Sets default criteria value.
+// st_funk.checked = true; // Sets default criteria value.
+
+//Input: Password length
+st_pwLength.value = password.length;
+st_pwLenInd.innerHTML = st_pwLength.value; //Prints default password length to page.
+st_pwLength.addEventListener("change", setPwLength); // Change the printed password length
+
+function setPwLength() {
+
+  st_pwLenInd.innerHTML = st_pwLength.value;
+
+}
 
 // Create arrays for usable characters: alphanumeric array, funky character array
 
@@ -32,14 +63,20 @@ const funky = [
 
 const bigArray = alphaLower.concat(alphaUpper, numeric, funky); //Join user-selected arrays
 
-// Password object to hold the password value, length and if the user wanted to include funky characters.
-let password = {
+function generateArray(x, y) {
 
-  value: "",
-  length: 5,
-  isFunky: true,
+  if (x) {
+
+    const bigArray = alphaLower.concat(alphaUpper, numeric);
+
+  } else if (y) {
+
+    const bigArray = alphaLower.concat(alphaUpper, numeric, funky);
+
+  }
 
 }
+
 
 // Prompt: Password criteria: Alphanumeric, funky, word-by-word (find a word library)
 
@@ -79,7 +116,14 @@ function createRandomPassword(len, funk) {
 // Write password to the #password input
 function writePassword() {
 
-  password.value = createRandomPassword(password.length, password.isFunky);
+
+  //capture data
+  password.length = st_pwLength.value;
+
+  generateArray(true, false);
+
+  password.value = createRandomPassword(password.length);
+
 
   console.log(password.value);
   st_password.innerHTML = password.value;
