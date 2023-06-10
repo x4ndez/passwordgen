@@ -12,17 +12,18 @@ let password = {
 
   value: "",
   length: 8,
-  isAlphanum: false,
-  isFunky: false,
-  isWord: false,
+  criteria: [true, false, false],
+  //criteria[0] = alphanumeric
+  //criteria[1] = funky
+  //criteria[2] = word-by-word
 
 }
 
-//Input: Criteria
-// st_alphanum.checked = true; // Sets default criteria value.
-// st_funk.checked = true; // Sets default criteria value.
+//User Input: Criteria
+st_alphanum.checked = password.criteria[0]; // Set Alphanumeric as default.
+// console.log(password.criteria[0]);
 
-//Input: Password length
+//User Input: Password length
 st_pwLength.value = password.length;
 st_pwLenInd.innerHTML = st_pwLength.value; //Prints default password length to page.
 st_pwLength.addEventListener("change", setPwLength); // Change the printed password length
@@ -61,21 +62,28 @@ const funky = [
   "}", "|", ":", '"', "<", ">", "?"
 ];
 
-const bigArray = alphaLower.concat(alphaUpper, numeric, funky); //Join user-selected arrays
+// const bigArray = alphaLower.concat(alphaUpper, numeric, funky); //Join user-selected arrays
 
 function generateArray(x, y) {
 
+  let localBigArray = [];
+
   if (x) {
 
-    const bigArray = alphaLower.concat(alphaUpper, numeric);
+    localBigArray = alphaLower.concat(alphaUpper, numeric);
 
   } else if (y) {
 
-    const bigArray = alphaLower.concat(alphaUpper, numeric, funky);
+    localBigArray = alphaLower.concat(alphaUpper, numeric, funky);
 
   }
 
+  return localBigArray;
+
 }
+
+const bigArray = generateArray(password.criteria[0], password.criteria[1]);
+console.log(bigArray);
 
 
 // Prompt: Password criteria: Alphanumeric, funky, word-by-word (find a word library)
@@ -113,7 +121,7 @@ function createRandomPassword(len, funk) {
 
 // Send string to output 'passwordText.value'
 
-// Write password to the #password input
+// Write password to the #password output
 function writePassword() {
 
 
