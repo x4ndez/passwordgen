@@ -82,8 +82,7 @@ function generateArray(x, y) {
 
 }
 
-const bigArray = generateArray(password.criteria[0], password.criteria[1]);
-console.log(bigArray);
+
 
 
 // Prompt: Password criteria: Alphanumeric, funky, word-by-word (find a word library)
@@ -95,7 +94,7 @@ console.log(bigArray);
 // Create function to create new randomized array of length given by user, include 0.
 // Add functionality to check if there are funky characters in the password if the user has selected funky, if there are no funky characters, re-generate.
 
-function randomNumber() {
+function randomNumber(bigArray) {
 
   let x = Math.floor(Math.random() * bigArray.length);
 
@@ -103,13 +102,13 @@ function randomNumber() {
 
 }
 
-function createRandomPassword(len, funk) {
+function createRandomPassword(len, bigArray) {
 
   let passwordArray = [];
 
   for (let i = 0; i < len; i++) {
 
-    passwordArray[i] = bigArray[randomNumber()];
+    passwordArray[i] = bigArray[randomNumber(bigArray)];
 
   }
 
@@ -128,9 +127,10 @@ function writePassword() {
   //capture data
   password.length = st_pwLength.value;
 
-  generateArray(true, false);
+  let bigArray = [];
+  bigArray = generateArray(password.criteria[0], password.criteria[1]);
 
-  password.value = createRandomPassword(password.length);
+  password.value = createRandomPassword(password.length, bigArray);
 
 
   console.log(password.value);
