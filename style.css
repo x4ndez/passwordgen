@@ -124,9 +124,16 @@ button[disabled] {
 #password-log {
 
   overflow-y: scroll;
-  width: 30%;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  width: 40%;
   height: 100px;
   float: right;
+
+  border-radius: 10px;
+  background-color: grey;
+  color: white;
+  font-size: 1rem;
 
 }
 

@@ -156,6 +156,8 @@ function createRandomPassword(len, bigArray) {
 
 }
 
+let trackingHeight = st_passwordLog.offsetHeight;
+
 function writePassword() {
 
   // Capture data
@@ -188,10 +190,21 @@ function writePassword() {
   console.log(password.value);
 
   st_password.innerHTML = password.value; // Prints password to output
-  passwordLog.push(password.value);
 
+  // Password Log
+  passwordLog.push(password.value); // Add generated password to array
 
+  st_passwordLog.innerHTML += "<li>" + passwordLog[passwordLog.length - 1] + "</li>"; // Print generated password to log
 
-  st_passwordLog.innerHTML += "<li>" + passwordLog[passwordLog.length - 1] + "</li>";
+  st_passwordLog.scrollTo({ // Used to auto-scroll to the bottom of the log as the list increases
+
+    top: trackingHeight,
+    left: 0,
+    behavior: "smooth",
+
+  });
+
+  trackingHeight += 100; // add 100px for each click of the Generate Password button so that it continues to auto-scroll
+
 }
 
