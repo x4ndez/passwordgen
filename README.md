@@ -23,7 +23,7 @@ In this challenge, I learned more about array and string handling.  I would like
 ## Update Log
 
 ### 11/06/2023
-- Added password history
+- Added password history feature.
 
 ## Deployed Application
 
