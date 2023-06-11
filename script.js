@@ -5,6 +5,10 @@ let st_funk = document.querySelector("#funky");
 let st_word = document.querySelector("#word");
 let st_pwLength = document.querySelector("#pwLength");
 let st_pwLenInd = document.querySelector("#pwLenInd");
+let st_passwordLog = document.querySelector("#password-log");
+
+let passwordLog = [];
+let passwordLogStr = "";
 
 // Password object to hold the password value, length and criteria.
 let password = {
@@ -184,5 +188,10 @@ function writePassword() {
   console.log(password.value);
 
   st_password.innerHTML = password.value; // Prints password to output
+  passwordLog.push(password.value);
+
+
+
+  st_passwordLog.innerHTML += "<li>" + passwordLog[passwordLog.length - 1] + "</li>";
 }
 
