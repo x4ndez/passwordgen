@@ -25,7 +25,7 @@ In this challenge, I learned more about array and string handling.  I would like
 
 ## References
 
-Word list obtained from: <www.bestwordlist.com>.
+Word list obtained from: www.bestwordlist.com.
 
 ## Creators
 
