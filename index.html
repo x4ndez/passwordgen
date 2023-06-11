@@ -18,32 +18,34 @@
       <div class="card-header">
         <h2>Generate a Password</h2>
       </div>
-      <div class="card-body"></div>
+      <div class="card-body">
+
+        <form>
+
+          <strong>Criteria:</strong><br>
+
+          <label for="alphanum">Alphanumeric</label>
+          <input type="radio" id="alphanum" name="criteria" /><br>
+
+          <label for="funky">Funky</label>
+          <input type="radio" id="funky" name="criteria" /><br>
+
+          <label for="word">Word-by-Word</label>
+          <input type="radio" id="word" name="criteria" /><br><br>
+
+          <label for="pwLength"><strong>Length:</strong></label><br>
+          <input type="range" id="pwLength" name="length" min="8" max="128" />
+          <p id="pwLenInd" style="display: inline;">0</p>
+
+        </form>
+
+      </div>
       <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
     </div>
     <div class="card-footer">
 
-      <form>
-
-        Criteria<br>
-
-        <label for="alphanum">Alphanumeric</label>
-        <input type="radio" id="alphanum" name="criteria" />
-
-        <label for="funky">Funky</label>
-        <input type="radio" id="funky" name="criteria" />
-
-        <label for="word">Word-by-Word</label>
-        <input type="radio" id="word" name="criteria" />
-
-        Password Length:
-        <label for="pwLength">Password Length</label>
-        <input type="range" id="pwLength" name="length" min="8" max="128" />
-        <p id="pwLenInd">0</p>
-
-      </form>
-
       <button id="generate" class="btn">Generate Password</button>
+
     </div>
   </div>
   </div>
