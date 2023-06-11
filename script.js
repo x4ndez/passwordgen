@@ -6,8 +6,7 @@ let st_word = document.querySelector("#word");
 let st_pwLength = document.querySelector("#pwLength");
 let st_pwLenInd = document.querySelector("#pwLenInd");
 
-
-// Password object to hold the password value, length and if the user wanted to include funky characters.
+// Password object to hold the password value, length and criteria.
 let password = {
 
   value: "",
@@ -21,7 +20,27 @@ let password = {
 
 //User Input: Criteria
 st_alphanum.checked = password.criteria[0]; // Set Alphanumeric as default.
-// console.log(password.criteria[0]);
+
+// IF the user selects Alphanumeric OR Funky criteria
+// THEN change the password ranges from 8-128
+
+st_alphanum.addEventListener("click", function () { passwordRangeSet(8, 128); });
+st_funk.addEventListener("click", function () { passwordRangeSet(8, 128); });
+
+// IF the user selects Word-by-Word criteria
+// THEN change the password ranges from 2-20
+
+st_word.addEventListener("click", function () { passwordRangeSet(2, 20); });
+
+function passwordRangeSet(x, y) {
+
+  st_pwLength.min = x;
+  st_pwLength.max = y;
+  password.length = st_pwLength.min;
+  st_pwLenInd.innerHTML = password.length;
+  st_pwLength.value = password.length;
+
+}
 
 //User Input: Password length
 st_pwLength.value = password.length;
